@@ -226,6 +226,23 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.btn-cta a:hover span {
   box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
 }
+.fh5co-nav ul li.btn-cta-ead a {
+  padding: 30px 0px !important;
+  color: #fff;
+}
+.fh5co-nav ul li.btn-cta-ead a span {
+  background: rgba(234, 146, 21, 0.8);
+  padding: 4px 10px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  transition: 0.3s;
+  border-radius: 100px;
+}
+.fh5co-nav ul li.btn-cta-ead a:hover span {
+  box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+}
 .fh5co-nav ul li.active > a {
   color: #fff !important;
 }

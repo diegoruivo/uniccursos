@@ -27,13 +27,13 @@
 
             <div class="nav">
 
-{{--                @if($errors->all())--}}
-{{--                    @foreach($errors->all() as $error)--}}
-{{--                        @message(['color' => 'orange'])--}}
-{{--                        <p class="icon-asterisk">{{ $error }}</p>--}}
-{{--                        @endmessage--}}
-{{--                    @endforeach--}}
-{{--                @endif--}}
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        @message(['color' => 'orange'])
+                        <p class="icon-asterisk">{{ $error }}</p>
+                        @endmessage
+                    @endforeach
+                @endif
 
                 <ul class="nav_tabs">
                     <li class="nav_tabs_item">
@@ -50,11 +50,33 @@
                         <div id="data">
 
                             <div class="label_g2">
-
+                                <label class="label">
+                                    <span class="legend">*Categoria do Curso:</span>
+                                    <select name="course" class="select2" required>
+                                        <option value="">Selecione a Categoria do Curso</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <p style="margin-top: 4px;">
+                                        <a href="{{ route('admin.course_category.index') }}"
+                                           class="text-orange icon-link" style="font-size: .8em;" target="_blank">Editar
+                                            Categorias de Cursos</a> |
+                                        <a href="{{ route('admin.course_category.create') }}"
+                                           class="text-orange icon-link" style="font-size: .8em;" target="_blank">Cadastrar
+                                            Nova Categoria de Cursos</a>
+                                    </p>
+                                </label>
                                 <label class="label">
                                     <span class="legend">*Nome do Curso:</span>
                                     <input type="text" name="title" placeholder="Nome do Curso" value="{{ old('title') }}" required />
                                 </label>
+                            </div>
+
+                            <div class="label_g2">
+
+
 
                                 <label class="label">
                                     <span class="legend">Subtítulo:</span>

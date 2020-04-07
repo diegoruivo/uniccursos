@@ -2,23 +2,22 @@
         <div class="container">
             <div class="row">
 
-                @isset($courses)
+                @isset($course_categories)
 
-                    @foreach($courses as $course)
+                    @foreach($course_categories as $category)
 
-                        <div class="col-lg-4 col-md-4 text-center">
+                        <div class="col-lg-3 col-md-3 text-center">
                             <div class="fh5co-blog animate-box">
-                                <a href="{{ route('web.course', ['slug' => $course->slug]) }}"><img class="img-responsive" src="{{ url('storage/' . $course->cover) }}" alt=""></a>
+                                <a href="{{ route('web.courses_category', ['slug' => $category->slug]) }}"><img class="img-responsive" src="{{ url('storage/' . $category->cover) }}" alt=""></a>
                                 <div class="blog-text">
-                                    <h3><a href="{{ route('web.course', ['slug' => $course->slug]) }}">{{ $course->title }}</a></h3>
-                                    <a href="{{ route('web.course', ['slug' => $course->slug]) }}" class="btn btn-primary">Veja Mais</a>
+                                    <h3><a href="{{ route('web.courses_category', ['slug' => $category->slug]) }}">{{ $category->title }}</a></h3>
+                                    <a href="{{ route('web.courses_category', ['slug' => $category->slug]) }}" class="btn btn-primary">Veja os Cursos</a>
                                 </div>
                             </div>
                         </div>
-
-                    @if(($loop->index + 1) % 3 === 0)
-                        <div style="width: 100%; float:left; height:1px;"></div>
-                    @endif
+                        @if(($loop->index + 1) % 4 === 0)
+                            <div style="width: 100%; float:left; height:1px;"></div>
+                        @endif
 
                     @endforeach
 

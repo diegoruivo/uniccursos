@@ -29,7 +29,9 @@ class Settings extends Model
         'youtube',
         'twitter',
         'ead',
-        'logo_admin'
+        'student_platform',
+        'logo_admin',
+        'keywords'
     ];
 
 

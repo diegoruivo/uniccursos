@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-1">
-                    <div id="fh5co-logo"><a href="{{ route('web.home') }}"><img src="{{ url('storage/' . $settings->logo) }}"></a></div>
+                    <div id="fh5co-logo"><a href="{{ route('web.index') }}"><img src="{{ url('storage/' . $settings->logo) }}"></a></div>
                 </div>
                 <div class="col-xs-11 text-right menu-1">
                     <ul>
@@ -44,7 +44,13 @@
                             <li><a href="{{ route('web.article', ['slug' => $page->slug]) }}">{{ $page->title }}</a></li>
                         @endforeach
 
-                        <li class="btn-cta"><a href="{{ $settings->ead }}" target="_blank"><span>Acesso ao EAD</span></a></li>
+                        @if(!empty($settings->student_platform))
+                            <li class="btn-cta"><a href="{{ $settings->student_platform }}" target="_blank"><span>PLATAFORMA ALUNO</span></a></li>
+                        @endif
+
+                        @if(!empty($settings->ead))
+                            <li class="btn-cta-ead"><a href="{{ $settings->ead }}" target="_blank"><span>CURSOS ONLINE</span></a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

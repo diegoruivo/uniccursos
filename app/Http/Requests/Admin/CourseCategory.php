@@ -5,7 +5,7 @@ namespace Unic\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class Course extends FormRequest
+class CourseCategory extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class Course extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3|max:191',
+            'title' => 'required|min:3|max:191'
         ];
     }
 }

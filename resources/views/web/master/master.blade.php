@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ $settings->title }}</title>
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="description" content="{!! $settings->description !!}"/>
+    <meta name="keywords" content="{!! $settings->keywords !!}"/>
+
 
     {!! $head ?? '' !!}
 

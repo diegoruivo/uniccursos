@@ -63,8 +63,12 @@
 
                             <label class="label">
                                 <span class="legend">Descrição:</span>
-                                <textarea name="description" cols="30" rows="6"
-                                          class="mce">{{ old('description') ?? $setting->description }}</textarea>
+                                <textarea name="description" cols="30" rows="4">{{ old('description') ?? $setting->description }}</textarea>
+                            </label>
+
+                            <label class="label">
+                                <span class="legend">Palavras-Chave:</span>
+                                <textarea name="keywords" cols="30" rows="4">{{ old('keywords') ?? $setting->keywords }}</textarea>
                             </label>
 
 
@@ -240,12 +244,18 @@
                                        value="{{ old('ead') ?? $setting->ead }}"/>
                             </label>
 
+                            <label class="label">
+                                <span class="legend">Link do Plataforma Aluno:</span>
+                                <input type="text" name="student_platform" placeholder="Endereço do EAD"
+                                       value="{{ old('student_platform') ?? $setting->student_platform }}"/>
+                            </label>
+
 
                             <div class="label_g2">
 
                                 <label class="label">
                                     <span class="legend">Logotipo do Painel de Controle</span>
-                                    <input type="file" name="logo_admin">
+                                    <input type="file" name="logoadmin">
                                 </label>
 
                                 <div class="dash_content_app_box">

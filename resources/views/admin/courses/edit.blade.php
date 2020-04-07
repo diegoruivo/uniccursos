@@ -35,6 +35,14 @@
                     @endforeach
                 @endif
 
+                @if(session()->exists('message'))
+
+                    @message(['color' => session()->get('color')])
+                    <p class="icon-asterisk">{{ session()->get('message') }}</p>
+                    @endmessage
+
+                @endif
+
                 <ul class="nav_tabs">
                     <li class="nav_tabs_item">
                         <a href="#data" class="nav_tabs_item_link active">Dados do Curso</a>
@@ -53,27 +61,42 @@
 
 
                             <div class="label_g2">
-
+                                <label class="label">
+                                    <span class="legend">*Categoria do Curso:</span>
+                                    <select name="course" class="select2">
+                                        <option value="">Selecione a Categoria do Curso</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ ($category->id === $course->course ? 'selected' : '') }}>{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    <p style="margin-top: 4px;">
+                                        <a href="{{ route('admin.course_category.index') }}"
+                                           class="text-orange icon-link" style="font-size: .8em;" target="_blank">Editar
+                                            Categorias de Cursos</a> |
+                                        <a href="{{ route('admin.course_category.create') }}"
+                                           class="text-orange icon-link" style="font-size: .8em;" target="_blank">Cadastrar
+                                            Nova Categoria de Cursos</a>
+                                    </p>
+                                </label>
                                 <label class="label">
                                     <span class="legend">*Nome do Curso:</span>
                                     <input type="text" name="title" placeholder="Nome do Curso"
                                            value="{{ old('title') ?? $course->title }}" required/>
                                 </label>
+                            </div>
 
 
+                            <div class="label_g2">
                                 <label class="label">
                                     <span class="legend">Subtítulo:</span>
                                     <input type="text" name="subtitle" placeholder="Subtítulo"
                                            value="{{ old('subtitle') ?? $course->subtitle }}"/>
                                 </label>
-
-
-                                <label class="label" style="margin-left: 20px;">
+                                <label class="label">
                                     <span class="legend">Posição na Lista de Cursos:</span>
                                     <input type="number" name="position" placeholder="Posição"
                                            value="{{ old('position') ?? $course->position }}"/>
                                 </label>
-
                             </div>
 
 

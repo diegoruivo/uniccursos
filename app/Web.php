@@ -23,6 +23,11 @@ class Web extends Model
         return $this->belongsTo(Page::class, 'page', 'id');
     }
 
+    public function course_categories()
+    {
+        return $this->belongsTo(Course::class, 'course', 'id');
+    }
+
     public function images()
     {
         return $this->hasMany(PageImage::class, 'page', 'id')->orderBy('cover', 'ASC');

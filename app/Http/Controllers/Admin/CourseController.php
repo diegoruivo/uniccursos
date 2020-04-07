@@ -6,6 +6,7 @@ use Unic\Http\Requests\Admin\Course as CourseRequest;
 use Illuminate\Http\Request;
 use Unic\Course;
 use Unic\Http\Controllers\Controller;
+use Unic\CourseCategory;
 
 class CourseController extends Controller
 {
@@ -32,7 +33,11 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('admin.courses.create');
+        $categories = CourseCategory::all();
+
+        return view('admin.courses.create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -71,9 +76,11 @@ class CourseController extends Controller
     public function edit($id)
     {
         $course = Course::where('id', $id)->first();
+        $categories = CourseCategory::all();
 
         return view('admin.courses.edit', [
-            'course' => $course
+            'course' => $course,
+            'categories' => $categories
         ]);
     }
 

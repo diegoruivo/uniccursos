@@ -17,16 +17,16 @@
                 <p>
                 <ul class="fh5co-social-icons">
                     @if (!empty($settings->twitter))
-                        <li><a href="{{ $settings->twitter}}"><i class="icon-twitter"></i></a></li>
+                        <li><a href="{{ $settings->twitter}}" target="_blank"><i class="icon-twitter"></i></a></li>
                     @endif
                     @if (!empty($settings->facebook))
-                        <li><a href="{{ $settings->facebook}}"><i class="icon-facebook"></i></a></li>
+                        <li><a href="{{ $settings->facebook}}" target="_blank"><i class="icon-facebook"></i></a></li>
                     @endif
                     @if (!empty($settings->instagram))
-                        <li><a href="{{ $settings->instagram}}"><i class="icon-instagram"></i></a></li>
+                        <li><a href="{{ $settings->instagram}}" target="_blank"><i class="icon-instagram"></i></a></li>
                     @endif
                     @if (!empty($settings->youtube))
-                        <li><a href="{{ $settings->youtube}}"><i class="icon-youtube"></i></a></li>
+                        <li><a href="{{ $settings->youtube}}" target="_blank"><i class="icon-youtube"></i></a></li>
                     @endif
                 </ul>
                 </p>

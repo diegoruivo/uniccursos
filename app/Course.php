@@ -14,15 +14,23 @@ class Course extends Model
         'description',
         'cover',
         'slug',
-        'position'
+        'position',
+        'course'
     ];
+
+
+
+
+    public function course_category()
+    {
+        return $this->belongsTo(CourseCategory::class, 'course', 'id');
+    }
 
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = str_slug($value);
     }
-
 
     public function getUrlCoverAttribute()
     {

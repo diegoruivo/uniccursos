@@ -56,6 +56,7 @@
                     @include('web.courses')
                 @endif
 
+
                 @if($show_contact)
                     @include('web.contact')
                 @endif

@@ -21,6 +21,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::orderBy('position', 'ASC')->get();
+
         return view('admin.pages.index', [
             'pages' => $pages
         ]);

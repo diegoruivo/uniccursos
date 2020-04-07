@@ -1,11 +1,10 @@
 <?php
 
-namespace Unic\Http\Requests\Admin;
+namespace Unic\Http\Requests\Web;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class Course extends FormRequest
+class Mail extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class Course extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return false;
     }
 
     /**
@@ -25,7 +24,10 @@ class Course extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3|max:191',
+            'name' => 'required|min:3|max:191',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'bodyMessage' => 'required|min:5'
         ];
     }
 }

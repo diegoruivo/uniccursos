@@ -27,13 +27,21 @@
 
             <div class="nav">
 
-{{--                @if($errors->all())--}}
-{{--                    @foreach($errors->all() as $error)--}}
-{{--                        @message(['color' => 'orange'])--}}
-{{--                        <p class="icon-asterisk">{{ $error }}</p>--}}
-{{--                        @endmessage--}}
-{{--                    @endforeach--}}
-{{--                @endif--}}
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        @message(['color' => 'orange'])
+                        <p class="icon-asterisk">{{ $error }}</p>
+                        @endmessage
+                    @endforeach
+                @endif
+
+                @if(session()->exists('message'))
+
+                    @message(['color' => session()->get('color')])
+                    <p class="icon-asterisk">{{ session()->get('message') }}</p>
+                    @endmessage
+
+                @endif
 
                 <ul class="nav_tabs">
                     <li class="nav_tabs_item">

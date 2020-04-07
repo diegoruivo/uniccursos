@@ -64,7 +64,7 @@
             <li class="dash_sidebar_nav_item  {{ isActive('admin.users') }}"><a class="icon-users" href="{{ route('admin.users.index') }}">Usuários</a></li>
 
 
-            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="{{ route('web.index') }}" target="_blank">Ver Site</a></li>
+            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="{{ route('web.home') }}" target="_blank">Ver Site</a></li>
             <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="{{ route('admin.logout') }}"
                                                  target="_blank">Sair</a></li>
         </ul>

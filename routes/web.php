@@ -15,7 +15,9 @@
 Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
 
     /** Home Page Site */
-    Route::get('/', 'WebController@home')->name('home');
+    Route::get('/', 'WebController@index')->name('index');
+    Route::get('/home', 'WebController@home')->name('home');
+    Route::get('cursos-categoria/{uri}', 'WebController@courses_category')->name('courses_category');
     Route::get('/cursos', 'WebController@courses')->name('courses');
     Route::get('/cursos/{uri}', 'WebController@course')->name('course');
     Route::get('/page', 'WebController@sobre')->name('page');
@@ -43,6 +45,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
 
         /** Cursos */
         Route::resource('courses', 'CourseController');
+
+        /** Categorias de Cursos */
+        Route::resource('course_category', 'CourseCategoryController');
+
 
         /** Páginas */
         Route::post('pages/image-set-cover', 'PageController@imageSetCover')->name('pages.imageSetCover');

@@ -3,10 +3,10 @@
 namespace Unic\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Unic\CourseCategory;
 use Unic\Http\Controllers\Controller;
-use Unic\Settings;
 
-class SettingController extends Controller
+class CourseCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,11 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('admin.settings.index');
+        $categories = CourseCategory::orderBy('position', 'ASC')->get();
+
+        return view('admin.course_category.index', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -23,9 +27,9 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('admin.course_category.create');
     }
 
     /**
@@ -36,7 +40,11 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoryCreate = CourseCategory::create($request->all());
+
+        return redirect()->route('admin.course_category.edit', [
+            'category' => $categoryCreate->id
+        ])->with(['color' => 'green', 'message' => 'Categoria de Cursos cadastrada com sucesso!']);
     }
 
     /**
@@ -58,10 +66,10 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        $setting = Settings::where('id', $id)->first();
+        $category = CourseCategory::where('id', $id)->first();
 
-        return view('admin.settings.edit', [
-            'setting' => $setting
+        return view('admin.course_category.edit', [
+            'category' => $category
         ]);
     }
 
@@ -74,32 +82,22 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $setting = Settings::where('id', $id)->first();
-        $setting->fill($request->all());
-        $setting->save();
+        $categoryUpdate = CourseCategory::where('id', $id)->first();
+        $categoryUpdate->fill($request->all());
+        $categoryUpdate->save();
 
-        // Upload de Logo
-        if (!empty($request->file('logo'))) {
-            $setting->logo = $request->file('logo')->store('setting');
+        // Upload de Imagem
+        if (!empty($request->file('cover'))) {
+            $categoryUpdate->cover = $request->file('cover')->store('course');
         }
 
-        // Upload de Favico
-        if (!empty($request->file('favico'))) {
-            $setting->favico = $request->file('favico')->store('setting');
-        }
-
-        // Upload de Logo Admin
-        if (!empty($request->file('logoadmin'))) {
-            $setting->logoadmin = $request->file('logoadmin')->store('setting');
-        }
-
-        if (!$setting->save()) {
+        if (!$categoryUpdate->save()) {
             return redirect()->back()->withInput()->withErrors();
         }
 
-        return redirect()->route('admin.settings.edit', [
-            'setting' => $setting->id
-        ])->with(['color' => 'green', 'message' => 'Configuração do Site atualizada com sucesso!']);
+        return redirect()->route('admin.course_category.edit', [
+            'category' => $categoryUpdate->id
+        ])->with(['color' => 'green', 'message' => 'Categoria de Cursos atualizada com sucesso!']);
     }
 
     /**

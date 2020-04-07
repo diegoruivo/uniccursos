@@ -333,6 +333,26 @@ h1, h2, h3, h4, h5, h6, figure {
 					}
 				}
 			}
+			&.btn-cta-ead {
+				a {
+					padding: 30px 0px !important;
+					color: $brand-white;
+					span {
+						background: rgba($brand-primary,.8);
+						padding: 4px 10px;
+						@include inline-block;
+						@include transition(.3s);
+						@include border-radius(100px);
+					}
+					&:hover {
+						span {
+							-webkit-box-shadow: 0px 14px 20px -9px rgba(0,0,0,0.75);
+							-moz-box-shadow: 0px 14px 20px -9px rgba(0,0,0,0.75);
+							box-shadow: 0px 14px 20px -9px rgba(0,0,0,0.75);
+						}
+					}
+				}
+			}
 			&.active {
 				> a {
 					color: $brand-white!important;
